@@ -1,1428 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PAK1 PLASTICS | Quality Plastic Products — Made in the USA</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    :root {
-      --navy: #0B1D3A;
-      --navy-light: #132B52;
-      --navy-mid: #1A3160;
-      --gold: #D4A843;
-      --gold-light: #E8C97A;
-      --blue-accent: #2E7ABF;
-      --white: #FAFAFA;
-      --gray-50: #F7F7F7;
-      --gray-100: #F0F0F0;
-      --gray-200: #E0E0E0;
-      --gray-400: #A0A0A0;
-      --gray-600: #6B6B6B;
-      --gray-800: #2A2A2A;
-      --red-accent: #C0392B;
-      --shadow: 0 4px 24px rgba(0,0,0,0.10);
-      --shadow-hover: 0 8px 40px rgba(0,0,0,0.18);
-      --radius: 8px;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Source Sans 3', sans-serif;
-      color: var(--gray-800);
-      background: var(--white);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* ===== HEADER ===== */
-    .header-banner {
-      background: var(--navy);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
-    }
-
-    .header-top {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
-      text-align: center;
-      padding: 20px 20px 12px;
-      position: relative;
-    }
-
-    .header-top::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 2px;
-      background: var(--gold);
-    }
-
-    .logo-text {
-      font-family: 'Oswald', sans-serif;
-      font-size: 2.6rem;
-      font-weight: 700;
-      letter-spacing: 6px;
-      color: var(--white);
-      text-transform: uppercase;
-    }
-
-    .logo-text span { color: var(--gold); }
-
-    .logo-subtitle {
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 0.8rem;
-      letter-spacing: 4px;
-      color: var(--gold-light);
-      text-transform: uppercase;
-      margin-top: 2px;
-      font-weight: 300;
-    }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 0;
-      border-top: 1px solid rgba(255,255,255,0.06);
-    }
-
-    nav a {
-      font-family: 'Oswald', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 500;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--gray-200);
-      text-decoration: none;
-      padding: 13px 28px;
-      transition: all 0.3s ease;
-      position: relative;
-    }
-
-    nav a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0;
-      height: 2px;
-      background: var(--gold);
-      transition: width 0.3s ease;
-    }
-
-    nav a:hover { color: var(--gold); }
-    nav a:hover::after { width: 60%; }
-    nav a.active { color: var(--gold); }
-    nav a.active::after { width: 60%; }
-
-    .hamburger { display: none; cursor: pointer; padding: 13px 20px; background: none; border: none; }
-    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); margin: 5px 0; transition: 0.3s; }
-
-    /* ===== HERO ===== */
-    .hero {
-      background: linear-gradient(170deg, var(--navy) 0%, #1a3a6b 50%, var(--navy-light) 100%);
-      padding: 56px 20px 48px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse at 20% 30%, rgba(212,168,67,0.07) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 70%, rgba(46,122,191,0.05) 0%, transparent 50%);
-    }
-
-    .hero h1 {
-      font-family: 'Oswald', sans-serif;
-      font-size: 2.4rem;
-      font-weight: 600;
-      color: var(--white);
-      letter-spacing: 3px;
-      margin-bottom: 10px;
-      position: relative;
-    }
-
-    .hero p {
-      font-size: 1.05rem;
-      color: var(--gray-200);
-      max-width: 620px;
-      margin: 0 auto;
-      font-weight: 300;
-      position: relative;
-    }
-
-    .gold-divider {
-      width: 60px;
-      height: 3px;
-      background: var(--gold);
-      margin: 16px auto;
-      border-radius: 2px;
-    }
-
-    .usa-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 20px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(212,168,67,0.3);
-      border-radius: 30px;
-      padding: 8px 20px;
-      position: relative;
-    }
-
-    .usa-badge span {
-      font-family: 'Oswald', sans-serif;
-      font-size: 0.8rem;
-      letter-spacing: 2px;
-      color: var(--gold-light);
-      text-transform: uppercase;
-    }
-
-    .usa-flag {
-      font-size: 1.2rem;
-    }
-
-    /* ===== CATEGORY TABS ===== */
-    .category-bar {
-      background: var(--gray-50);
-      border-bottom: 1px solid var(--gray-200);
-      padding: 0 20px;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .category-bar-inner {
-      display: flex;
-      justify-content: center;
-      gap: 0;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .cat-tab {
-      font-family: 'Oswald', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--gray-600);
-      padding: 14px 20px;
-      cursor: pointer;
-      border: none;
-      background: none;
-      white-space: nowrap;
-      border-bottom: 2px solid transparent;
-      transition: all 0.25s;
-    }
-
-    .cat-tab:hover { color: var(--navy); }
-    .cat-tab.active {
-      color: var(--navy);
-      border-bottom-color: var(--gold);
-    }
-
-    /* ===== PRODUCTS GRID ===== */
-    .products-section {
-      padding: 40px 20px 60px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .section-title {
-      font-family: 'Oswald', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 600;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      text-align: center;
-      color: var(--navy);
-      margin-bottom: 32px;
-    }
-
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 24px;
-    }
-
-    .product-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
-      cursor: pointer;
-      position: relative;
-    }
-
-    .product-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-hover);
-    }
-
-    .product-card[style*="display: none"] { display: none !important; }
-
-    .product-img-wrap {
-      width: 100%;
-      aspect-ratio: 1;
-      background: var(--gray-100);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .product-img-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.4s ease;
-    }
-
-    .product-card:hover .product-img-wrap img {
-      transform: scale(1.05);
-    }
-
-    .product-badge {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: var(--gold);
-      color: var(--navy);
-      font-family: 'Oswald', sans-serif;
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-      padding: 4px 10px;
-      border-radius: 3px;
-      text-transform: uppercase;
-    }
-
-    .product-badge.new { background: var(--blue-accent); color: white; }
-    .product-badge.usa { background: var(--red-accent); color: white; }
-
-    .product-info {
-      padding: 14px 16px 18px;
-    }
-
-    .product-info h3 {
-      font-family: 'Oswald', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 500;
-      letter-spacing: 1px;
-      color: var(--navy);
-      text-transform: uppercase;
-    }
-
-    .product-item-num {
-      font-size: 0.72rem;
-      color: var(--gray-400);
-      font-weight: 500;
-      letter-spacing: 1px;
-      margin-top: 2px;
-    }
-
-    .product-info p {
-      font-size: 0.8rem;
-      color: var(--gray-600);
-      margin-top: 6px;
-      line-height: 1.5;
-    }
-
-    .view-details-btn {
-      display: inline-block;
-      margin-top: 10px;
-      font-family: 'Oswald', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--blue-accent);
-      border: 1px solid var(--blue-accent);
-      padding: 6px 14px;
-      border-radius: 4px;
-      transition: all 0.25s;
-      text-decoration: none;
-    }
-
-    .view-details-btn:hover {
-      background: var(--blue-accent);
-      color: white;
-    }
-
-    /* ===== PRODUCT DETAIL MODAL ===== */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(11,29,58,0.85);
-      z-index: 200;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      animation: fadeIn 0.25s ease;
-    }
-
-    .modal-overlay.open { display: flex; }
-
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-    .modal {
-      background: white;
-      border-radius: 12px;
-      max-width: 720px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-      animation: slideUp 0.3s ease;
-    }
-
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .modal-header {
-      background: linear-gradient(135deg, var(--navy), var(--navy-light));
-      padding: 24px 28px;
-      border-radius: 12px 12px 0 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .modal-header h2 {
-      font-family: 'Oswald', sans-serif;
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: white;
-      letter-spacing: 2px;
-    }
-
-    .modal-header .item-num {
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 0.85rem;
-      color: var(--gold-light);
-      font-weight: 400;
-      margin-top: 2px;
-    }
-
-    .modal-close {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.2);
-      color: white;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      font-size: 1.2rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s;
-      flex-shrink: 0;
-    }
-
-    .modal-close:hover { background: rgba(255,255,255,0.2); }
-
-    .modal-body {
-      padding: 28px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-    }
-
-    .modal-img {
-      width: 100%;
-      border-radius: 8px;
-      background: var(--gray-100);
-    }
-
-    .modal-specs h3 {
-      font-family: 'Oswald', sans-serif;
-      font-size: 0.85rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 12px;
-    }
-
-    .spec-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 8px 0;
-      border-bottom: 1px solid var(--gray-100);
-      font-size: 0.88rem;
-    }
-
-    .spec-row:last-child { border-bottom: none; }
-
-    .spec-label { color: var(--gray-600); }
-    .spec-value { color: var(--navy); font-weight: 500; }
-
-    .modal-desc {
-      padding: 0 28px 24px;
-      font-size: 0.9rem;
-      color: var(--gray-600);
-      line-height: 1.7;
-    }
-
-    .modal-cta {
-      padding: 0 28px 28px;
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .cta-btn {
-      font-family: 'Oswald', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 500;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 12px 28px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: all 0.25s;
-      text-decoration: none;
-      border: none;
-    }
-
-    .cta-primary {
-      background: var(--navy);
-      color: var(--gold);
-    }
-    .cta-primary:hover {
-      background: var(--gold);
-      color: var(--navy);
-    }
-
-    .cta-secondary {
-      background: transparent;
-      color: var(--navy);
-      border: 1px solid var(--navy);
-    }
-    .cta-secondary:hover {
-      background: var(--navy);
-      color: white;
-    }
-
-    /* ===== CALLOUT ===== */
-    .callout {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
-      padding: 50px 20px;
-      text-align: center;
-      position: relative;
-    }
-
-    .callout::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    }
-
-    .callout h2 {
-      font-family: 'Oswald', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: var(--gold);
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      margin-bottom: 14px;
-      position: relative;
-    }
-
-    .callout p {
-      font-size: 1rem;
-      color: var(--gray-200);
-      max-width: 650px;
-      margin: 0 auto;
-      font-weight: 300;
-      line-height: 1.8;
-      position: relative;
-    }
-
-    /* ===== PRODUCTION CAPACITY ===== */
-    .capacity-section {
-      padding: 50px 20px;
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .capacity-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 16px;
-      margin-top: 30px;
-    }
-
-    .capacity-card {
-      background: var(--gray-50);
-      border-radius: var(--radius);
-      padding: 20px 12px;
-      border: 1px solid var(--gray-200);
-    }
-
-    .capacity-card h4 {
-      font-family: 'Oswald', sans-serif;
-      font-size: 0.82rem;
-      letter-spacing: 1px;
-      color: var(--navy);
-      text-transform: uppercase;
-    }
-
-    .capacity-num {
-      font-family: 'Oswald', sans-serif;
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--gold);
-      margin-top: 6px;
-    }
-
-    .capacity-unit {
-      font-size: 0.72rem;
-      color: var(--gray-600);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    /* ===== CONTACT ===== */
-    .contact-section {
-      padding: 50px 20px;
-      max-width: 700px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .contact-info-card {
-      background: var(--white);
-      border-radius: 12px;
-      box-shadow: var(--shadow);
-      padding: 36px;
-      margin-top: 24px;
-    }
-
-    .contact-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      margin: 14px 0;
-      font-size: 1.05rem;
-    }
-
-    .contact-row svg {
-      width: 22px;
-      height: 22px;
-      color: var(--gold);
-      flex-shrink: 0;
-    }
-
-    .contact-row a {
-      color: var(--navy);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    .contact-row a:hover { color: var(--gold); }
-
-    .contact-form { margin-top: 28px; text-align: left; }
-
-    .form-group { margin-bottom: 14px; }
-
-    .form-group label {
-      display: block;
-      font-family: 'Oswald', sans-serif;
-      font-size: 0.8rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--navy);
-      margin-bottom: 5px;
-    }
-
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 11px 14px;
-      border: 1px solid var(--gray-200);
-      border-radius: 6px;
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 0.92rem;
-      transition: border-color 0.2s;
-      background: var(--gray-50);
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: var(--gold);
-    }
-
-    .form-group textarea { resize: vertical; min-height: 110px; }
-
-    .btn-submit {
-      background: var(--navy);
-      color: var(--gold);
-      font-family: 'Oswald', sans-serif;
-      font-size: 0.92rem;
-      font-weight: 500;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 13px 40px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: all 0.3s;
-      width: 100%;
-    }
-
-    .btn-submit:hover { background: var(--gold); color: var(--navy); }
-
-    /* ===== FOOTER ===== */
-    footer {
-      background: var(--navy);
-      border-top: 3px solid var(--gold);
-      padding: 28px 20px;
-      text-align: center;
-    }
-
-    .footer-nav {
-      display: flex;
-      justify-content: center;
-      gap: 28px;
-      margin-bottom: 16px;
-    }
-
-    .footer-nav a {
-      font-family: 'Oswald', sans-serif;
-      font-size: 0.78rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--gray-200);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-nav a:hover { color: var(--gold); }
-
-    .footer-contact {
-      color: var(--gray-200);
-      font-size: 0.88rem;
-      margin-bottom: 6px;
-    }
-
-    .footer-contact a { color: var(--gold-light); text-decoration: none; }
-    .footer-contact a:hover { text-decoration: underline; }
-
-    .footer-copy { color: var(--gray-600); font-size: 0.72rem; margin-top: 10px; }
-
-    /* ===== ANIMATIONS ===== */
-    .page { animation: fadeUp 0.45s ease; }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(14px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .product-card {
-      animation: fadeUp 0.45s ease backwards;
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 768px) {
-      .logo-text { font-size: 2rem; letter-spacing: 4px; }
-      nav { display: none; flex-direction: column; text-align: center; }
-      nav.open { display: flex; }
-      nav a { padding: 12px 20px; border-top: 1px solid rgba(255,255,255,0.05); }
-      .hamburger { display: block; text-align: center; }
-      .hero h1 { font-size: 1.7rem; }
-      .products-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 14px; }
-      .product-info { padding: 10px 12px 14px; }
-      .product-info h3 { font-size: 0.82rem; }
-      .product-info p { font-size: 0.75rem; }
-      .view-details-btn { font-size: 0.65rem; padding: 5px 10px; }
-      .modal-body { grid-template-columns: 1fr; }
-      .modal-header h2 { font-size: 1.1rem; }
-      .category-bar-inner { justify-content: flex-start; }
-      .cat-tab { padding: 12px 14px; font-size: 0.7rem; }
-      .capacity-grid { grid-template-columns: repeat(3, 1fr); }
-      .footer-nav { gap: 14px; }
-    }
-
-    @media (max-width: 480px) {
-      .products-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-      .capacity-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PAK1 PLASTICS | Quality Plastic Products - Made in the USA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#0B1D3A;--navy-light:#132B52;--gold:#D4A843;--gold-light:#E8C97A;--blue-accent:#2E7ABF;--white:#FAFAFA;--gray-50:#F7F7F7;--gray-100:#F0F0F0;--gray-200:#E0E0E0;--gray-400:#A0A0A0;--gray-600:#6B6B6B;--gray-800:#2A2A2A;--shadow:0 4px 24px rgba(0,0,0,0.10);--shadow-hover:0 8px 40px rgba(0,0,0,0.18);--radius:8px}
+html{scroll-behavior:smooth}
+body{font-family:'Source Sans 3',sans-serif;color:var(--gray-800);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+.header-banner{background:var(--navy);position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.3)}
+.header-top{background:linear-gradient(135deg,var(--navy),var(--navy-light));text-align:center;padding:20px 20px 12px;position:relative}
+.header-top::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:80px;height:2px;background:var(--gold)}
+.logo-text{font-family:'Oswald',sans-serif;font-size:2.6rem;font-weight:700;letter-spacing:6px;color:var(--white);text-transform:uppercase}
+.logo-text span{color:var(--gold)}
+.logo-subtitle{font-size:.8rem;letter-spacing:4px;color:var(--gold-light);text-transform:uppercase;margin-top:2px;font-weight:300}
+nav{display:flex;justify-content:center;border-top:1px solid rgba(255,255,255,0.06)}
+nav a{font-family:'Oswald',sans-serif;font-size:.9rem;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:#E0E0E0;text-decoration:none;padding:13px 28px;transition:all .3s;position:relative}
+nav a::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:0;height:2px;background:var(--gold);transition:width .3s}
+nav a:hover{color:var(--gold)}nav a:hover::after{width:60%}nav a.active{color:var(--gold)}nav a.active::after{width:60%}
+.hamburger{display:none;cursor:pointer;padding:13px 20px;background:none;border:none}.hamburger span{display:block;width:24px;height:2px;background:var(--white);margin:5px 0}
+.hero{background:linear-gradient(170deg,var(--navy),#1a3a6b 50%,var(--navy-light));padding:56px 20px 48px;text-align:center;position:relative;overflow:hidden}
+.hero h1{font-family:'Oswald',sans-serif;font-size:2.4rem;font-weight:600;color:var(--white);letter-spacing:3px;margin-bottom:10px}
+.hero p{font-size:1.05rem;color:#E0E0E0;max-width:620px;margin:0 auto;font-weight:300}
+.gold-divider{width:60px;height:3px;background:var(--gold);margin:16px auto;border-radius:2px}
+.usa-badge{display:inline-flex;align-items:center;gap:8px;margin-top:20px;background:rgba(255,255,255,0.08);border:1px solid rgba(212,168,67,0.3);border-radius:30px;padding:8px 20px}
+.usa-badge span{font-family:'Oswald',sans-serif;font-size:.8rem;letter-spacing:2px;color:var(--gold-light);text-transform:uppercase}
+.category-bar{background:var(--gray-50);border-bottom:1px solid var(--gray-200);padding:0 20px;overflow-x:auto}
+.category-bar-inner{display:flex;justify-content:center;max-width:1100px;margin:0 auto}
+.cat-tab{font-family:'Oswald',sans-serif;font-size:.78rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--gray-600);padding:14px 20px;cursor:pointer;border:none;background:none;white-space:nowrap;border-bottom:2px solid transparent;transition:all .25s}
+.cat-tab:hover{color:var(--navy)}.cat-tab.active{color:var(--navy);border-bottom-color:var(--gold)}
+.products-section{padding:40px 20px 60px;max-width:1200px;margin:0 auto}
+.section-title{font-family:'Oswald',sans-serif;font-size:1.5rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;text-align:center;color:var(--navy);margin-bottom:32px}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:24px}
+.product-card{background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:transform .35s,box-shadow .35s;cursor:pointer}
+.product-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-hover)}
+.product-img-wrap{width:100%;aspect-ratio:1;background:var(--gray-100);overflow:hidden;position:relative}
+.product-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.product-card:hover .product-img-wrap img{transform:scale(1.05)}
+.product-badge{position:absolute;top:12px;right:12px;background:var(--gold);color:var(--navy);font-family:'Oswald',sans-serif;font-size:.65rem;font-weight:600;letter-spacing:1px;padding:4px 10px;border-radius:3px;text-transform:uppercase}
+.product-badge.new{background:var(--blue-accent);color:white}
+.product-info{padding:14px 16px 18px}
+.product-info h3{font-family:'Oswald',sans-serif;font-size:.95rem;font-weight:500;letter-spacing:1px;color:var(--navy);text-transform:uppercase}
+.product-item-num{font-size:.72rem;color:var(--gray-400);font-weight:500;letter-spacing:1px;margin-top:2px}
+.product-info p{font-size:.8rem;color:var(--gray-600);margin-top:6px;line-height:1.5}
+.view-details-btn{display:inline-block;margin-top:10px;font-family:'Oswald',sans-serif;font-size:.72rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--blue-accent);border:1px solid var(--blue-accent);padding:6px 14px;border-radius:4px;transition:all .25s}
+.view-details-btn:hover{background:var(--blue-accent);color:white}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(11,29,58,0.85);z-index:200;justify-content:center;align-items:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal{background:white;border-radius:12px;max-width:720px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,0.4)}
+.modal-header{background:linear-gradient(135deg,var(--navy),var(--navy-light));padding:24px 28px;border-radius:12px 12px 0 0;display:flex;justify-content:space-between;align-items:center}
+.modal-header h2{font-family:'Oswald',sans-serif;font-size:1.4rem;font-weight:600;color:white;letter-spacing:2px}
+.modal-header .item-num{font-size:.85rem;color:var(--gold-light);margin-top:2px}
+.modal-close{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;width:36px;height:36px;border-radius:50%;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.modal-body{padding:28px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.modal-img{width:100%;border-radius:8px;background:var(--gray-100)}
+.modal-specs h3{font-family:'Oswald',sans-serif;font-size:.85rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.spec-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--gray-100);font-size:.88rem}
+.spec-label{color:var(--gray-600)}.spec-value{color:var(--navy);font-weight:500}
+.modal-desc{padding:0 28px 24px;font-size:.9rem;color:var(--gray-600);line-height:1.7}
+.modal-cta{padding:0 28px 28px;display:flex;gap:12px;flex-wrap:wrap}
+.cta-btn{font-family:'Oswald',sans-serif;font-size:.85rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:12px 28px;border-radius:6px;cursor:pointer;transition:all .25s;text-decoration:none;border:none}
+.cta-primary{background:var(--navy);color:var(--gold)}.cta-primary:hover{background:var(--gold);color:var(--navy)}
+.cta-secondary{background:transparent;color:var(--navy);border:1px solid var(--navy)}.cta-secondary:hover{background:var(--navy);color:white}
+.callout{background:linear-gradient(135deg,var(--navy),var(--navy-light));padding:50px 20px;text-align:center}
+.callout h2{font-family:'Oswald',sans-serif;font-size:1.5rem;font-weight:600;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:14px}
+.callout p{font-size:1rem;color:#E0E0E0;max-width:650px;margin:0 auto;font-weight:300;line-height:1.8}
+.capacity-section{padding:50px 20px;max-width:900px;margin:0 auto;text-align:center}
+.capacity-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;margin-top:30px}
+.capacity-card{background:var(--gray-50);border-radius:var(--radius);padding:20px 12px;border:1px solid var(--gray-200)}
+.capacity-card h4{font-family:'Oswald',sans-serif;font-size:.82rem;letter-spacing:1px;color:var(--navy);text-transform:uppercase}
+.capacity-num{font-family:'Oswald',sans-serif;font-size:1.8rem;font-weight:700;color:var(--gold);margin-top:6px}
+.capacity-unit{font-size:.72rem;color:var(--gray-600);letter-spacing:1px;text-transform:uppercase}
+.contact-section{padding:50px 20px;max-width:700px;margin:0 auto;text-align:center}
+.contact-info-card{background:var(--white);border-radius:12px;box-shadow:var(--shadow);padding:36px;margin-top:24px}
+.contact-row{display:flex;align-items:center;justify-content:center;gap:12px;margin:14px 0;font-size:1.05rem}
+.contact-row svg{width:22px;height:22px;color:var(--gold);flex-shrink:0}
+.contact-row a{color:var(--navy);text-decoration:none;font-weight:500}
+.contact-form{margin-top:28px;text-align:left}
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-family:'Oswald',sans-serif;font-size:.8rem;letter-spacing:1px;text-transform:uppercase;color:var(--navy);margin-bottom:5px}
+.form-group input,.form-group textarea{width:100%;padding:11px 14px;border:1px solid var(--gray-200);border-radius:6px;font-family:'Source Sans 3',sans-serif;font-size:.92rem;background:var(--gray-50)}
+.form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--gold)}
+.form-group textarea{resize:vertical;min-height:110px}
+.btn-submit{background:var(--navy);color:var(--gold);font-family:'Oswald',sans-serif;font-size:.92rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:13px 40px;border:none;border-radius:6px;cursor:pointer;width:100%}
+.btn-submit:hover{background:var(--gold);color:var(--navy)}
+footer{background:var(--navy);border-top:3px solid var(--gold);padding:28px 20px;text-align:center}
+.footer-nav{display:flex;justify-content:center;gap:28px;margin-bottom:16px}
+.footer-nav a{font-family:'Oswald',sans-serif;font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:#E0E0E0;text-decoration:none}
+.footer-contact{color:#E0E0E0;font-size:.88rem;margin-bottom:6px}
+.footer-contact a{color:var(--gold-light);text-decoration:none}
+.footer-copy{color:var(--gray-600);font-size:.72rem;margin-top:10px}
+.page{animation:fadeUp .45s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:768px){.logo-text{font-size:2rem;letter-spacing:4px}nav{display:none;flex-direction:column;text-align:center}nav.open{display:flex}nav a{padding:12px 20px;border-top:1px solid rgba(255,255,255,0.05)}.hamburger{display:block;text-align:center}.hero h1{font-size:1.7rem}.products-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}.product-info{padding:10px 12px 14px}.product-info h3{font-size:.82rem}.modal-body{grid-template-columns:1fr}.category-bar-inner{justify-content:flex-start}.cat-tab{padding:12px 14px;font-size:.7rem}.capacity-grid{grid-template-columns:repeat(3,1fr)}.footer-nav{gap:14px}}
+@media(max-width:480px){.products-grid{grid-template-columns:1fr 1fr;gap:10px}.capacity-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
 </head>
 <body>
+<header class="header-banner">
+<div class="header-top">
+<div class="logo-text">PAK<span>1</span> PLASTICS</div>
+<div class="logo-subtitle">Quality Plastic Products &bull; Made in the USA</div>
+</div>
+<button class="hamburger" onclick="document.querySelector('nav').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+<nav>
+<a href="#" class="active" onclick="showPage('home',this)">Home</a>
+<a href="#" onclick="showPage('products',this)">Products</a>
+<a href="#" onclick="showPage('contact',this)">Contact</a>
+</nav>
+</header>
 
-  <!-- HEADER -->
-  <header class="header-banner">
-    <div class="header-top">
-      <div class="logo-text">PAK<span>1</span> PLASTICS</div>
-      <div class="logo-subtitle">Quality Plastic Products &bull; Made in the USA</div>
-    </div>
-    <button class="hamburger" onclick="document.querySelector('nav').classList.toggle('open')" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-    <nav>
-      <a href="#" class="active" onclick="showPage('home', this)">Home</a>
-      <a href="#" onclick="showPage('products', this)">Products</a>
-      <a href="#" onclick="showPage('contact', this)">Contact</a>
-    </nav>
-  </header>
+<div id="page-home" class="page">
+<section class="hero">
+<h1>Premium Plastic Products</h1>
+<div class="gold-divider"></div>
+<p>Paint trays, bucket organizers, rollers, and more - manufactured with recycled post-consumer plastic right here in the USA.</p>
+<div class="usa-badge"><span>Made in the USA</span></div>
+</section>
+<section class="products-section">
+<h2 class="section-title">Featured Products</h2>
+<div class="products-grid" id="featured-grid"></div>
+</section>
+<section class="callout">
+<h2>Manufacturing Power</h2>
+<div class="gold-divider"></div>
+<p>We produce tens of thousands of units daily across our full product line. Custom color, branding, and packaging available for all products.</p>
+</section>
+<section class="capacity-section">
+<h2 class="section-title">Daily Production Capacity</h2>
+<div class="capacity-grid">
+<div class="capacity-card"><h4>Silver Econ Tray</h4><div class="capacity-num">10,000</div><div class="capacity-unit">units / day</div></div>
+<div class="capacity-card"><h4>Paint Roller Tray</h4><div class="capacity-num">8,000</div><div class="capacity-unit">units / day</div></div>
+<div class="capacity-card"><h4>4" Mini Tray</h4><div class="capacity-num">8,000</div><div class="capacity-unit">units / day</div></div>
+<div class="capacity-card"><h4>9" Deep Well Rest</h4><div class="capacity-num">6,000</div><div class="capacity-unit">units / day</div></div>
+<div class="capacity-card"><h4>7" Mini Roller</h4><div class="capacity-num">4,000</div><div class="capacity-unit">units / day</div></div>
+<div class="capacity-card"><h4>Paint Cup</h4><div class="capacity-num">4,000</div><div class="capacity-unit">units / day</div></div>
+<div class="capacity-card"><h4>12" Deep Well</h4><div class="capacity-num">3,000</div><div class="capacity-unit">units / day</div></div>
+<div class="capacity-card"><h4>9" Jumbo Tray</h4><div class="capacity-num">2,000</div><div class="capacity-unit">units / day</div></div>
+<div class="capacity-card"><h4>18" Handle Tray</h4><div class="capacity-num">2,000</div><div class="capacity-unit">units / day</div></div>
+</div>
+</section>
+</div>
 
-  <!-- ============ HOME ============ -->
-  <div id="page-home" class="page">
-    <section class="hero">
-      <h1>Premium Plastic Products</h1>
-      <div class="gold-divider"></div>
-      <p>Paint trays, bucket organizers, rollers, and more — manufactured with recycled post-consumer plastic right here in the USA.</p>
-      <div class="usa-badge">
-        <span class="usa-flag">🇺🇸</span>
-        <span>Made in the USA</span>
-      </div>
-    </section>
+<div id="page-products" class="page" style="display:none">
+<section class="hero">
+<h1>Full Product Catalog</h1>
+<div class="gold-divider"></div>
+<p>All products manufactured in the USA. Available in custom colors with custom branding, labeling, and packaging.</p>
+</section>
+<div class="category-bar"><div class="category-bar-inner">
+<button class="cat-tab active" onclick="filterCat('all',this)">All Products</button>
+<button class="cat-tab" onclick="filterCat('trays',this)">Paint Trays</button>
+<button class="cat-tab" onclick="filterCat('buckets',this)">Buckets &amp; Organizers</button>
+<button class="cat-tab" onclick="filterCat('tools',this)">Tools &amp; Accessories</button>
+</div></div>
+<section class="products-section">
+<div class="products-grid" id="all-products-grid"></div>
+</section>
+</div>
 
-    <!-- Featured Products on Home -->
-    <section class="products-section">
-      <h2 class="section-title">Featured Products</h2>
-      <div class="products-grid" id="featured-grid">
-        <!-- Populated by JS -->
-      </div>
-    </section>
+<div id="page-contact" class="page" style="display:none">
+<section class="hero">
+<h1>Get In Touch</h1>
+<div class="gold-divider"></div>
+<p>Reach out for pricing, custom orders, or any questions about our products.</p>
+</section>
+<section class="contact-section" style="display:block">
+<div class="contact-info-card">
+<div class="contact-row">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+<a href="tel:9175443581">917-544-3581</a>
+</div>
+<div class="contact-row">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+<a id="emlk1">Loading...</a>
+</div>
+<div class="contact-form">
+<div class="form-group"><label>Name</label><input type="text" placeholder="Your name"></div>
+<div class="form-group"><label>Email</label><input type="email" placeholder="Your email"></div>
+<div class="form-group"><label>Message</label><textarea placeholder="Tell us about your project or inquiry..."></textarea></div>
+<button class="btn-submit" onclick="alert('To enable form submissions, connect this to Formspree.io or Netlify Forms!')">Send Message</button>
+</div>
+</div>
+</section>
+</div>
 
-    <!-- Production Capacity -->
-    <section class="callout">
-      <h2>Manufacturing Power</h2>
-      <div class="gold-divider"></div>
-      <p>We produce tens of thousands of units daily across our full product line. Custom color, branding, and packaging available for all products.</p>
-    </section>
+<footer>
+<div class="footer-nav">
+<a href="#" onclick="showPage('home',this)">Home</a>
+<a href="#" onclick="showPage('products',this)">Products</a>
+<a href="#" onclick="showPage('contact',this)">Contact</a>
+</div>
+<div class="footer-contact">917-544-3581 | <a id="emlk2">Loading...</a></div>
+<div class="footer-copy">2025 Pak1 Plastics. All rights reserved.</div>
+</footer>
 
-    <section class="capacity-section">
-      <h2 class="section-title">Daily Production Capacity</h2>
-      <div class="capacity-grid">
-        <div class="capacity-card"><h4>Silver Econ Tray</h4><div class="capacity-num">10,000</div><div class="capacity-unit">units / day</div></div>
-        <div class="capacity-card"><h4>Paint Roller Tray</h4><div class="capacity-num">8,000</div><div class="capacity-unit">units / day</div></div>
-        <div class="capacity-card"><h4>4" Mini Tray</h4><div class="capacity-num">8,000</div><div class="capacity-unit">units / day</div></div>
-        <div class="capacity-card"><h4>9" Deep Well Rest</h4><div class="capacity-num">6,000</div><div class="capacity-unit">units / day</div></div>
-        <div class="capacity-card"><h4>7" Mini Roller</h4><div class="capacity-num">4,000</div><div class="capacity-unit">units / day</div></div>
-        <div class="capacity-card"><h4>Paint Cup</h4><div class="capacity-num">4,000</div><div class="capacity-unit">units / day</div></div>
-        <div class="capacity-card"><h4>12" Deep Well</h4><div class="capacity-num">3,000</div><div class="capacity-unit">units / day</div></div>
-        <div class="capacity-card"><h4>9" Jumbo Tray</h4><div class="capacity-num">2,000</div><div class="capacity-unit">units / day</div></div>
-        <div class="capacity-card"><h4>18" Handle Tray</h4><div class="capacity-num">2,000</div><div class="capacity-unit">units / day</div></div>
-      </div>
-    </section>
-  </div>
+<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
+<div class="modal">
+<div class="modal-header">
+<div><h2 id="modal-title"></h2><div class="item-num" id="modal-item"></div></div>
+<button class="modal-close" onclick="closeModal()">X</button>
+</div>
+<div class="modal-body">
+<img class="modal-img" id="modal-img" src="" alt="">
+<div class="modal-specs" id="modal-specs"></div>
+</div>
+<div class="modal-desc" id="modal-desc"></div>
+<div class="modal-cta">
+<a class="cta-btn cta-primary" href="tel:9175443581">Call 917-544-3581</a>
+<a class="cta-btn cta-secondary" id="emlk3">Email for Quote</a>
+</div>
+</div>
+</div>
 
-  <!-- ============ PRODUCTS ============ -->
-  <div id="page-products" class="page" style="display:none;">
-    <section class="hero">
-      <h1>Full Product Catalog</h1>
-      <div class="gold-divider"></div>
-      <p>All products manufactured in the USA. Available in custom colors with custom branding, labeling, and packaging.</p>
-    </section>
+<script data-cfasync="false">
+var _u='ANDR'+'EW',_d='PAK1PL'+'ASTICS.COM',_e=_u+'@'+_d,_m='mai'+'lto:'+_e;
+document.getElementById('emlk1').href=_m;document.getElementById('emlk1').textContent=_e;
+document.getElementById('emlk2').href=_m;document.getElementById('emlk2').textContent=_e;
+document.getElementById('emlk3').href=_m;
 
-    <div class="category-bar">
-      <div class="category-bar-inner">
-        <button class="cat-tab active" onclick="filterCat('all', this)">All Products</button>
-        <button class="cat-tab" onclick="filterCat('trays', this)">Paint Trays</button>
-        <button class="cat-tab" onclick="filterCat('buckets', this)">Buckets & Organizers</button>
-        <button class="cat-tab" onclick="filterCat('tools', this)">Tools & Accessories</button>
-      </div>
-    </div>
+var P=[
+{id:'pdw9',n:'9" Deep Well Paint Tray',it:'PDW-9',c:'trays',f:1,b:'Popular',bc:'',im:'images/pdw9.jpg',s:'3 Qt capacity, fits 7" or 9" rollers',d:'Our flagship deep well paint tray. Features ladder legs, durable stackable design, reusable. Available in any color.',sp:[['Capacity','3 Quart'],['Roller Size','7" or 9"'],['Dimensions','11" x 14"'],['Weight','0.60 lbs'],['Features','Ladder Legs, Stackable'],['Bulk Pack','600 EA / Skid'],['Box Pack','12 EA / Box'],['Boxes/Skid','44']]},
+{id:'dwbh9',n:'9" Deep Well Rest Tray',it:'DWBH-9',c:'trays',f:1,b:'',bc:'',im:'images/dwbh9.jpg',s:'2 Qt capacity, built-in brush/roller rest',d:'Features a convenient brush and roller rest built into the tray. Stackable. Available in any color.',sp:[['Capacity','2 Quart'],['Roller Size','9"'],['Dimensions','11" x 15"'],['Weight','0.62 lbs'],['Features','Brush / Roller Rest, Stackable'],['Bulk Pack','1,200 EA / Skid'],['Box Pack','12 EA / Box'],['Boxes/Skid','60']]},
+{id:'mrp7',n:'7" Mini Roller Tray',it:'MRP-7',c:'trays',f:1,b:'',bc:'',im:'images/mrp7.jpg',s:'1 Qt capacity, 7" rollers, retail tab',d:'Compact 7" mini roller tray with retail hang tab. Perfect for smaller jobs and touch-ups. Stackable.',sp:[['Capacity','1 Quart'],['Roller Size','7"'],['Dimensions','9.75" x 13"'],['Weight','0.33 lbs'],['Features','Retail Tab, Stackable'],['Bulk Pack','3,000 EA / Skid'],['Box Pack','24 EA / Box'],['Boxes/Skid','60']]},
+{id:'mpt4',n:'4" Mini Tray',it:'MPT-4',c:'trays',f:1,b:'',bc:'',im:'images/mpt4.jpg',s:'1/3 Qt capacity, great for detail work',d:'Ultra-compact 4" mini tray for trim, detail work, and small projects. Retail hang tab. Stackable.',sp:[['Capacity','1/3 Quart'],['Roller Size','4"'],['Dimensions','6" x 13"'],['Weight','0.28 lbs'],['Features','Retail Tab, Stackable'],['Bulk Pack','3,600 EA / Skid'],['Box Pack','36 EA / Box'],['Boxes/Skid','54']]},
+{id:'dwt18',n:'18" Deep Well Tray',it:'DWT-18',c:'trays',f:1,b:'',bc:'',im:'images/dwt18.jpg',s:'1.5 gal capacity, 18" rollers, low profile',d:'Professional-grade 18" tray from reprocessed plastic. Low profile, reinforced ramp with thick stubs.',sp:[['Capacity','1.5 Gallon'],['Roller Size','18"'],['Dimensions','22" x 13"'],['Weight','1.7 lbs'],['Material','Black, Reprocessed Plastic'],['Features','Low Profile, Reinforced Ramp'],['Box Pack','12 EA / Box'],['Boxes/Skid','48']]},
+{id:'jpt9',n:'9" Jumbo Paint Tray',it:'JPT-9',c:'trays',f:1,b:'',bc:'',im:'images/jpt9.jpg',s:'1 gal capacity, round sturdy industrial design',d:'Extra-large jumbo tray, 1 gallon capacity. Round, sturdy, industrial design. Stackable. Any color.',sp:[['Capacity','1 Gallon'],['Roller Size','9"'],['Dimensions','13" x 19"'],['Weight','1.1 lbs'],['Features','Round Industrial Design, Stackable'],['Bulk Pack','700 EA / Skid'],['Box Pack','12 EA / Box'],['Boxes/Skid','48']]},
+{id:'dwt12',n:'12" Deep Well Tray',it:'DWT-12',c:'trays',f:0,b:'',bc:'',im:'images/dwt12.jpg',s:'1 gal capacity, deep studs, sturdy design',d:'12" deep well tray with deep studs and sturdy design. Stackable.',sp:[['Capacity','1 Gallon'],['Roller Size','12"'],['Dimensions','16" x 16"'],['Weight','0.98 lbs'],['Features','Deep Studs, Stackable'],['Bulk Pack','900 EA / Skid'],['Box Pack','24 EA / Box'],['Boxes/Skid','36']]},
+{id:'prt3',n:'Paint Trim Tray',it:'1PRT-3',c:'trays',f:0,b:'',bc:'',im:'images/1prt3.jpg',s:'1/2 pint, dual cavity brush rest and paint cup',d:'Compact paint trim tray with dual cavity - brush rest on one side, paint cup on the other. For 3" rollers and brushes.',sp:[['Capacity','1/2 Pint'],['For','3" Rollers and Brushes'],['Dimensions','4.75" x 7.25"'],['Weight','0.13 lbs'],['Features','Dual Cavity, Stackable'],['Box Pack','48 EA / Box'],['Boxes/Skid','120']]},
+{id:'ptc16',n:'Paint Trim Cup',it:'PTC-16',c:'trays',f:0,b:'',bc:'',im:'images/ptc16.jpg',s:'16 oz capacity, handle and pour spout',d:'16 oz paint trim cup with handle and pour spout. For small brushes and detail work. Stackable.',sp:[['Capacity','16 Ounces'],['For','Small Brushes'],['Dimensions','4.75" x 7.25"'],['Weight','0.17 lbs'],['Features','Handle, Pour Spout, Stackable'],['Box Pack','6 EA / Box'],['Boxes/Skid','287']]},
+{id:'spt1q',n:'Silver Econ Tray',it:'SPT-1Q',c:'trays',f:0,b:'',bc:'',im:'images/spt1q.jpg',s:'1 Qt, fits 7" or 9" rollers, ladder grips',d:'Economy silver paint tray with ladder grips. Lightweight, stackable.',sp:[['Capacity','1 Quart'],['Roller Size','7" or 9"'],['Dimensions','11.5" x 15.5"'],['Weight','0.56 lbs'],['Features','Ladder Grips, Stackable'],['Bulk Pack','900 EA / Skid'],['Box Pack','24 EA / Box'],['Boxes/Skid','36']]},
+{id:'dwth18',n:'18" Deep Well Handle Tray',it:'DWTH-18',c:'trays',f:0,b:'Pro',bc:'new',im:'images/dwth18.jpg',s:'3 gal, built-in handle, reinforced ramp',d:'Largest tray, 3 gallon capacity with built-in handle. Reinforced ramp, wide stubs. Reprocessed plastic.',sp:[['Capacity','3 Gallon'],['Roller Size','18"'],['Dimensions','22" x 16"'],['Weight','3.4 lbs'],['Material','Black, Reprocessed Plastic'],['Features','Built-in Handle, Reinforced Ramp'],['Box Pack','4 EA / Box'],['Boxes/Skid','28']]},
+{id:'bog5',n:'Bucket Tool Organizer',it:'BOG-5',c:'buckets',f:1,b:'New',bc:'new',im:'images/bog5.jpg',s:'Fits all 3.5 and 5 gal buckets',d:'Fits all standard 5 and 3.5 gallon buckets. Multiple slots and trays for tools, nuts, bolts. Counter top, floor, and dump bin displays available.',sp:[['Fits','All 3.5 and 5 Gallon Buckets'],['Features','Multiple Slots and Trays'],['Made From','Recycled Post-Consumer Plastic'],['Display Options','Floor, Counter, Dump Bin']]},
+{id:'gbpb15',n:'Grit Back Paint Bucket (1.5 Gal)',it:'GBPB-15',c:'buckets',f:0,b:'',bc:'',im:'images/gbpb.jpg',s:'1.5 gal, flat grit back doubles as paint tray',d:'Paint bucket with flat grit back that doubles as a self-contained paint tray. Retractable lid with brush holders.',sp:[['Capacity','1.5 Gallon'],['Key Feature','Grit Back (doubles as tray)'],['Lid','Retractable with brush holders'],['Custom Branding','Available']]},
+{id:'gbpb1',n:'Grit Back Paint Bucket (1 Gal)',it:'GBPB-1',c:'buckets',f:0,b:'',bc:'',im:'images/gbpb.jpg',s:'1 gal, flat grit back doubles as paint tray',d:'Compact 1-gallon grit back paint bucket. Flat grit back doubles as paint tray.',sp:[['Capacity','1 Gallon'],['Key Feature','Grit Back (doubles as tray)'],['Custom Branding','Available']]},
+{id:'gbpb35',n:'Grit Back Paint Bucket (3.5 Gal)',it:'GBPB-35',c:'buckets',f:0,b:'',bc:'',im:'images/gbpb.jpg',s:'3.5 gal, flat grit back doubles as paint tray',d:'Large 3.5-gallon grit back paint bucket with retractable lid.',sp:[['Capacity','3.5 Gallon'],['Key Feature','Grit Back (doubles as tray)'],['Lid','Retractable with brush holders'],['Custom Branding','Available']]},
+{id:'bclo',n:'Bucket Combo Lid and Opener',it:'BCLO',c:'buckets',f:0,b:'',bc:'',im:'images/bclo.jpg',s:'Lid plus opener combo, fits 3.5 and 5 gal buckets',d:'Combo lid and opener. Lid includes socket for storing opener tool. Fits all standard 5 and 3.5 gallon buckets.',sp:[['Fits','All 3.5 and 5 Gallon Buckets'],['Includes','Lid plus Opener'],['Lid Feature','Socket for opener storage'],['Opener','Opens buckets and paint cans']]},
+{id:'hdub1',n:'Heavy Duty Utility Tote',it:'HDUB-1',c:'buckets',f:1,b:'New',bc:'new',im:'images/hdub1.jpg',s:'Versatile tote, two deep wells, heavy duty handle',d:'Versatile utility tote with two 7.5" deep wells. Heavy duty handle for extra weight. Great for hospitality, medical, painting, remodeling.',sp:[['Wells','Two Deep Wells (7.5" depth)'],['Handle','Heavy Duty, Reinforced'],['Colors','Several Available'],['Uses','Hospitality, Medical, Painting, Remodeling'],['Custom Branding','Available']]},
+{id:'ezpr',n:'EZ Paint Roller',it:'EZPR-3 / EZPR-4 / EZPR-9',c:'tools',f:0,b:'',bc:'',im:'images/ezpr.jpg',s:'Available in 3", 4", and 9" sizes',d:'Durable all-plastic paint rollers in 3", 4", and 9". Balanced for even coverage. Pegboard-ready packaging.',sp:[['Sizes','3", 4", 9"'],['Balance','Center-balanced'],['Surfaces','Smooth and Semi-Smooth'],['Packaging','Peg Board Header Card'],['Custom Branding','Available']]},
+{id:'ms51',n:'5-in-1 Mixing Stick',it:'5IN1-MS',c:'tools',f:0,b:'',bc:'',im:'images/ms51.jpg',s:'Mixes, measures, aerates, cleans, clips-on',d:'Five functions in one: mixes, measures, aerates, cleans, and clips onto paint cans and buckets. Peg wall ready.',sp:[['Function 1','Mixes'],['Function 2','Measures'],['Function 3','Aerates'],['Function 4','Cleans'],['Function 5','Clips onto cans and buckets']]},
+{id:'bco',n:'Bucket and Can Opener',it:'BCO',c:'tools',f:0,b:'',bc:'',im:'images/bco.jpg',s:'Opens paint cans and buckets, impulse buy sized',d:'Versatile tool that opens paint cans and buckets. Sized as an impulse buy. Two hanging configurations.',sp:[['Opens','Paint Cans and Buckets'],['Retail Options','2 Hanging Configurations'],['POP Display','12 Pieces']]},
+{id:'ps',n:'Standard Paint Screen',it:'SPS',c:'tools',f:0,b:'',bc:'',im:'images/ps.jpg',s:'Heavy duty, fits all 5 gal buckets',d:'Heavy duty paint screen for all standard 5-gallon buckets. Works with standard paint trays. Resists solvents and paint buildup.',sp:[['Fits','All 5 Gallon Buckets'],['Compatible','Standard Paint Trays'],['Features','Hook Secure, Best Roll Angle'],['Durability','Resists Solvents']]}
+];
 
-    <section class="products-section">
-      <div class="products-grid" id="all-products-grid">
-        <!-- Populated by JS -->
-      </div>
-    </section>
-  </div>
+function renderCard(p){
+var bg=p.b?'<span class="product-badge '+p.bc+'">'+p.b+'</span>':'';
+return '<div class="product-card" data-cat="'+p.c+'" onclick="openModal(\''+p.id+'\')">'+'<div class="product-img-wrap">'+'<img src="'+p.im+'" alt="'+p.n+'" loading="lazy">'+bg+'</div><div class="product-info">'+'<h3>'+p.n+'</h3>'+'<div class="product-item-num">ITEM# '+p.it+'</div>'+'<p>'+p.s+'</p>'+'<span class="view-details-btn">View Details</span>'+'</div></div>';
+}
 
-  <!-- ============ CONTACT ============ -->
-  <div id="page-contact" class="page" style="display:none;">
-    <section class="hero">
-      <h1>Get In Touch</h1>
-      <div class="gold-divider"></div>
-      <p>Reach out for pricing, custom orders, or any questions about our products.</p>
-    </section>
+document.getElementById('featured-grid').innerHTML=P.filter(function(p){return p.f;}).map(renderCard).join('');
+document.getElementById('all-products-grid').innerHTML=P.map(renderCard).join('');
 
-    <section class="contact-section" style="display:block;">
-      <div class="contact-info-card">
-        <div class="contact-row">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-          <a href="tel:9175443581">917-544-3581</a>
-        </div>
-        <div class="contact-row">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-          <a href="/cdn-cgi/l/email-protection#22636c667067756272636913726e6371766b61710c616d6f"><span class="__cf_email__" data-cfemail="adece3e9ffe8faedfdece69cfde1ecfef9e4eefe83eee2e0">[email&#160;protected]</span></a>
-        </div>
-        <div class="contact-row">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/></svg>
-          <a href="https://www.pak1plastics.com" target="_blank">PAK1PLASTICS.COM</a>
-        </div>
+function filterCat(c,btn){
+var t=document.querySelectorAll('.cat-tab');for(var i=0;i<t.length;i++)t[i].classList.remove('active');
+btn.classList.add('active');
+var cards=document.querySelectorAll('#all-products-grid .product-card');
+for(var i=0;i<cards.length;i++){cards[i].style.display=(c==='all'||cards[i].getAttribute('data-cat')===c)?'':'none';}
+}
 
-        <div class="contact-form">
-          <div class="form-group">
-            <label>Name</label>
-            <input type="text" placeholder="Your name">
-          </div>
-          <div class="form-group">
-            <label>Email</label>
-            <input type="email" placeholder="Your email">
-          </div>
-          <div class="form-group">
-            <label>Message</label>
-            <textarea placeholder="Tell us about your project, custom order, or inquiry..."></textarea>
-          </div>
-          <button class="btn-submit" onclick="alert('To enable form submissions, connect this to Formspree.io or Netlify Forms — both free!')">Send Message</button>
-        </div>
-      </div>
-    </section>
-  </div>
+function openModal(id){
+var p=null;for(var i=0;i<P.length;i++){if(P[i].id===id){p=P[i];break;}}
+if(!p)return;
+document.getElementById('modal-title').textContent=p.n;
+document.getElementById('modal-item').textContent='ITEM# '+p.it;
+document.getElementById('modal-img').src=p.im;
+document.getElementById('modal-img').alt=p.n;
+document.getElementById('modal-desc').textContent=p.d;
+var h='<h3>Specifications</h3>';
+for(var i=0;i<p.sp.length;i++){h+='<div class="spec-row"><span class="spec-label">'+p.sp[i][0]+'</span><span class="spec-value">'+p.sp[i][1]+'</span></div>';}
+document.getElementById('modal-specs').innerHTML=h;
+document.getElementById('modal').classList.add('open');
+document.body.style.overflow='hidden';
+}
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-nav">
-      <a href="#" onclick="showPage('home', this)">Home</a>
-      <a href="#" onclick="showPage('products', this)">Products</a>
-      <a href="#" onclick="showPage('contact', this)">Contact</a>
-    </div>
-    <div class="footer-contact">
-      917-544-3581 &nbsp;|&nbsp; <a href="/cdn-cgi/l/email-protection#e9a8a7adbbacbea9b9a8a2d8b9a5a8babda0aabac7aaa6a4"><span class="__cf_email__" data-cfemail="de9f909a8c9b899e8e9f95ef8e929f8d8a979d8df09d9193">[email&#160;protected]</span></a>
-    </div>
-    <div class="footer-copy">&copy; 2025 Pak1 Plastics. All rights reserved.</div>
-  </footer>
+function closeModal(){document.getElementById('modal').classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
 
-  <!-- MODAL -->
-  <div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
-    <div class="modal">
-      <div class="modal-header">
-        <div>
-          <h2 id="modal-title"></h2>
-          <div class="item-num" id="modal-item"></div>
-        </div>
-        <button class="modal-close" onclick="closeModal()">&times;</button>
-      </div>
-      <div class="modal-body">
-        <img class="modal-img" id="modal-img" src="" alt="">
-        <div class="modal-specs" id="modal-specs"></div>
-      </div>
-      <div class="modal-desc" id="modal-desc"></div>
-      <div class="modal-cta">
-        <a class="cta-btn cta-primary" href="tel:9175443581">Call 917-544-3581</a>
-        <a class="cta-btn cta-secondary" href="/cdn-cgi/l/email-protection#b2f3fcf6e0f7e5f2e2f3f983e2fef3e1e6fbf1e19cf1fdff">Email for Quote</a>
-      </div>
-    </div>
-  </div>
-
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // ===== PRODUCT DATA =====
-    const products = [
-      {
-        id: 'pdw9',
-        name: '9" Deep Well Paint Tray',
-        item: 'PDW-9',
-        cat: 'trays',
-        featured: true,
-        badge: 'Popular',
-        badgeClass: '',
-        img: 'https://static.wixstatic.com/media/e8e652_3cb494325134481fbdf210378e80c836~mv2.jpg/v1/fit/w_400,h_400,q_75,enc_avif,quality_auto/e8e652_3cb494325134481fbdf210378e80c836~mv2.jpg',
-        short: '3 Qt capacity, fits 7" or 9" rollers',
-        desc: 'Our flagship deep well paint tray. Features ladder legs for secure placement, durable stackable design, and is reusable. Available in any color.',
-        specs: [
-          ['Capacity', '3 Quart'],
-          ['Roller Size', '7" or 9"'],
-          ['Dimensions', '11" x 14"'],
-          ['Weight', '0.60 lbs'],
-          ['Features', 'Ladder Legs, Stackable'],
-          ['Bulk Pack', '600 EA / Skid'],
-          ['Box Pack', '12 EA / Box'],
-          ['Boxes/Skid', '44']
-        ]
-      },
-      {
-        id: 'dwbh9',
-        name: '9" Deep Well Rest Tray',
-        item: 'DWBH-9',
-        cat: 'trays',
-        featured: true,
-        badge: '',
-        img: 'https://static.wixstatic.com/media/e8e652_562b392088cd4c0180a234b17453d913~mv2.jpg/v1/fit/w_400,h_400,q_75,enc_avif,quality_auto/e8e652_562b392088cd4c0180a234b17453d913~mv2.jpg',
-        short: '2 Qt capacity, built-in brush/roller rest',
-        desc: 'Features a convenient brush and roller rest built right into the tray. Stackable design for easy storage. Available in any color.',
-        specs: [
-          ['Capacity', '2 Quart'],
-          ['Roller Size', '9"'],
-          ['Dimensions', '11" x 15"'],
-          ['Weight', '0.62 lbs'],
-          ['Features', 'Brush / Roller Rest, Stackable'],
-          ['Bulk Pack', '1,200 EA / Skid'],
-          ['Box Pack', '12 EA / Box'],
-          ['Boxes/Skid', '60']
-        ]
-      },
-      {
-        id: 'mrp7',
-        name: '7" Mini Roller Tray',
-        item: 'MRP-7',
-        cat: 'trays',
-        featured: true,
-        badge: '',
-        img: 'https://static.wixstatic.com/media/e8e652_627d36aff3954fda972eaca58734c2bd~mv2.jpg/v1/fit/w_400,h_400,q_75,enc_avif,quality_auto/e8e652_627d36aff3954fda972eaca58734c2bd~mv2.jpg',
-        short: '1 Qt capacity, 7" rollers, retail tab',
-        desc: 'Compact 7" mini roller tray with retail hang tab. Perfect for smaller painting jobs and touch-ups. Stackable design.',
-        specs: [
-          ['Capacity', '1 Quart'],
-          ['Roller Size', '7"'],
-          ['Dimensions', '9.75" x 13"'],
-          ['Weight', '0.33 lbs'],
-          ['Features', 'Retail Tab, Stackable'],
-          ['Bulk Pack', '3,000 EA / Skid'],
-          ['Box Pack', '24 EA / Box'],
-          ['Boxes/Skid', '60']
-        ]
-      },
-      {
-        id: 'mpt4',
-        name: '4" Mini Tray',
-        item: 'MPT-4',
-        cat: 'trays',
-        featured: true,
-        badge: '',
-        img: 'https://static.wixstatic.com/media/e8e652_03172a23b3804fce9d9ef27187d91362~mv2.jpg/v1/fit/w_400,h_400,q_75,enc_avif,quality_auto/e8e652_03172a23b3804fce9d9ef27187d91362~mv2.jpg',
-        short: '1/3 Qt capacity, great for detail work',
-        desc: 'Ultra-compact 4" mini tray ideal for trim, detail work, and small projects. Includes retail hang tab. Stackable.',
-        specs: [
-          ['Capacity', '1/3 Quart'],
-          ['Roller Size', '4"'],
-          ['Dimensions', '6" x 13"'],
-          ['Weight', '0.28 lbs'],
-          ['Features', 'Retail Tab, Stackable'],
-          ['Bulk Pack', '3,600 EA / Skid'],
-          ['Box Pack', '36 EA / Box'],
-          ['Boxes/Skid', '54']
-        ]
-      },
-      {
-        id: 'dwt18',
-        name: '18" Deep Well Tray',
-        item: 'DWT-18',
-        cat: 'trays',
-        featured: true,
-        badge: '',
-        img: 'https://static.wixstatic.com/media/e8e652_29afa98175fd46a181a802da10b3e68a~mv2.jpg/v1/fit/w_400,h_400,q_75,enc_avif,quality_auto/e8e652_29afa98175fd46a181a802da10b3e68a~mv2.jpg',
-        short: '1.5 gal capacity, 18" rollers, low profile',
-        desc: 'Professional-grade 18" tray made from reprocessed plastic. Shallow, low profile design with reinforced ramp and thick stubs. Black color.',
-        specs: [
-          ['Capacity', '1.5 Gallon'],
-          ['Roller Size', '18"'],
-          ['Dimensions', '22" x 13"'],
-          ['Weight', '1.7 lbs'],
-          ['Material', 'Black, Reprocessed Plastic'],
-          ['Features', 'Low Profile, Reinforced Ramp'],
-          ['Box Pack', '12 EA / Box'],
-          ['Boxes/Skid', '48']
-        ]
-      },
-      {
-        id: 'jpt9',
-        name: '9" Jumbo Paint Tray',
-        item: 'JPT-9',
-        cat: 'trays',
-        featured: true,
-        badge: '',
-        img: 'https://static.wixstatic.com/media/e8e652_c901c0da6254400182fc3e529b2b04cb~mv2.jpg/v1/fit/w_400,h_400,q_75,enc_avif,quality_auto/e8e652_c901c0da6254400182fc3e529b2b04cb~mv2.jpg',
-        short: '1 gal capacity, round sturdy industrial design',
-        desc: 'Our extra-large jumbo tray with 1 gallon capacity. Round, sturdy, industrial design built for heavy use. Stackable. Available in any color.',
-        specs: [
-          ['Capacity', '1 Gallon'],
-          ['Roller Size', '9"'],
-          ['Dimensions', '13" x 19"'],
-          ['Weight', '1.1 lbs'],
-          ['Features', 'Round Industrial Design, Stackable'],
-          ['Bulk Pack', '700 EA / Skid'],
-          ['Box Pack', '12 EA / Box'],
-          ['Boxes/Skid', '48']
-        ]
-      },
-      {
-        id: 'dwt12',
-        name: '12" Deep Well Tray',
-        item: 'DWT-12',
-        cat: 'trays',
-        featured: false,
-        badge: '',
-        img: 'https://static.wixstatic.com/media/e8e652_4478c2838748409dbc943a6f91cb4355~mv2.jpg/v1/fit/w_400,h_400,q_75,enc_avif,quality_auto/e8e652_4478c2838748409dbc943a6f91cb4355~mv2.jpg',
-        short: '1 gal capacity, deep studs, sturdy design',
-        desc: '12" wide deep well tray with deep studs and a sturdy design. Perfect for mid-size rollers and larger projects. Stackable.',
-        specs: [
-          ['Capacity', '1 Gallon'],
-          ['Roller Size', '12"'],
-          ['Dimensions', '16" x 16"'],
-          ['Weight', '0.98 lbs'],
-          ['Features', 'Deep Studs, Sturdy Design, Stackable'],
-          ['Bulk Pack', '900 EA / Skid'],
-          ['Box Pack', '24 EA / Box'],
-          ['Boxes/Skid', '36']
-        ]
-      },
-      {
-        id: '1prt3',
-        name: 'Paint Trim Tray',
-        item: '1PRT-3',
-        cat: 'trays',
-        featured: false,
-        badge: '',
-        img: 'images/1prt3.jpg',
-        short: '1/2 pint, dual cavity brush rest & paint cup',
-        desc: 'Compact paint trim tray with convenient dual cavity design — one side for your brush rest, the other as a paint cup. Ideal for 3" rollers and brushes.',
-        specs: [
-          ['Capacity', '1/2 Pint'],
-          ['Roller Size', '3" Rollers & Brushes'],
-          ['Dimensions', '4.75" x 7.25"'],
-          ['Weight', '0.13 lbs'],
-          ['Features', 'Dual Cavity, Brush Rest, Paint Cup'],
-          ['Stackable', 'Yes'],
-          ['Box Pack', '48 EA / Box'],
-          ['Boxes/Skid', '120']
-        ]
-      },
-      {
-        id: 'ptc16',
-        name: 'Paint Trim Cup',
-        item: 'PTC-16',
-        cat: 'trays',
-        featured: false,
-        badge: '',
-        img: 'images/ptc16.jpg',
-        short: '16 oz capacity, handle & pour spout',
-        desc: 'Handy 16 oz paint trim cup with a convenient handle and pour spout. Designed for small brushes and detail trim work. Stackable.',
-        specs: [
-          ['Capacity', '16 Ounces'],
-          ['For', 'Small Brushes'],
-          ['Dimensions', '4.75" x 7.25"'],
-          ['Weight', '0.17 lbs'],
-          ['Features', 'Handle, Pour Spout, Stackable'],
-          ['Box Pack', '6 EA / Box'],
-          ['Boxes/Skid', '287']
-        ]
-      },
-      {
-        id: 'spt1q',
-        name: 'Silver Econ Tray',
-        item: 'SPT-1Q',
-        cat: 'trays',
-        featured: false,
-        badge: '',
-        img: 'images/spt1q.jpg',
-        short: '1 Qt, fits 7" or 9" rollers, ladder grips',
-        desc: 'Economy silver-colored paint tray with ladder grips. Lightweight, stackable, and designed for everyday painting tasks. Fits 7" or 9" rollers.',
-        specs: [
-          ['Capacity', '1 Quart'],
-          ['Roller Size', '7" or 9"'],
-          ['Dimensions', '11.5" x 15.5"'],
-          ['Weight', '0.56 lbs'],
-          ['Features', 'Ladder Grips, Stackable'],
-          ['Bulk Pack', '900 EA / Skid'],
-          ['Box Pack', '24 EA / Box'],
-          ['Boxes/Skid', '36']
-        ]
-      },
-      {
-        id: 'dwth18',
-        name: '18" Deep Well Handle Tray',
-        item: 'DWTH-18',
-        cat: 'trays',
-        featured: false,
-        badge: 'Pro',
-        badgeClass: 'new',
-        img: 'images/dwth18.jpg',
-        short: '3 gal, built-in handle, reinforced ramp',
-        desc: 'Our largest tray with 3-gallon capacity and a convenient built-in handle. Reinforced ramp with wide stubs. Made from reprocessed plastic.',
-        specs: [
-          ['Capacity', '3 Gallon'],
-          ['Roller Size', '18"'],
-          ['Dimensions', '22" x 16"'],
-          ['Weight', '3.4 lbs'],
-          ['Material', 'Black, Reprocessed Plastic'],
-          ['Features', 'Built-in Handle, Reinforced Ramp'],
-          ['Box Pack', '4 EA / Box'],
-          ['Boxes/Skid', '28']
-        ]
-      },
-      {
-        id: 'bog5',
-        name: 'Bucket Tool Organizer',
-        item: 'BOG-5',
-        cat: 'buckets',
-        featured: true,
-        badge: 'New',
-        badgeClass: 'new',
-        img: 'https://static.wixstatic.com/media/e8e652_3bf07c08b5b9489d91700d243c48bed8~mv2.jpg/v1/fit/w_400,h_400,q_75,enc_avif,quality_auto/e8e652_3bf07c08b5b9489d91700d243c48bed8~mv2.jpg',
-        short: 'Fits all 3.5 & 5 gal buckets',
-        desc: 'The Bucket Organizer fits all standard 5 & 3.5 gallon buckets. Multiple slots and trays for tools, nuts, bolts, and more. Available in counter top, floor displays, and dump bins. Sized and priced to fly off shelves.',
-        specs: [
-          ['Fits', 'All 3.5 & 5 Gallon Buckets'],
-          ['Features', 'Multiple Slots & Trays'],
-          ['Made From', 'Recycled Post-Consumer Plastic'],
-          ['Display Options', 'Floor, Counter, Dump Bin'],
-          ['Floor Display', '18-36 PCS (30"W x 50"H x 30"D)'],
-          ['Counter Display', '6-12 PCS (14"W x 18"H x 14"D)'],
-          ['Dump Bin', '24-36 PCS (30"W x 36"H x 30"D)']
-        ]
-      },
-      {
-        id: 'gbpb15',
-        name: 'Grit Back Paint Bucket (1.5 Gal)',
-        item: 'GBPB-15',
-        cat: 'buckets',
-        featured: false,
-        badge: '',
-        img: 'images/gbpb.jpg',
-        short: '1.5 gal, flat grit back doubles as paint tray',
-        desc: 'Innovative paint bucket with a flat grit back that doubles as a self-contained paint tray. Features retractable lid with utility holders for up to two brushes. Custom branding available.',
-        specs: [
-          ['Capacity', '1.5 Gallon'],
-          ['Key Feature', 'Grit Back (doubles as tray)'],
-          ['Lid', 'Retractable with brush holders'],
-          ['Custom Branding', 'Logo, Labeling, Boxing Available']
-        ]
-      },
-      {
-        id: 'gbpb1',
-        name: 'Grit Back Paint Bucket (1 Gal)',
-        item: 'GBPB-1',
-        cat: 'buckets',
-        featured: false,
-        badge: '',
-        img: 'images/gbpb.jpg',
-        short: '1 gal, flat grit back doubles as paint tray',
-        desc: 'Compact 1-gallon grit back paint bucket. The flat grit back doubles as a self-contained paint tray. Perfect for smaller projects.',
-        specs: [
-          ['Capacity', '1 Gallon'],
-          ['Key Feature', 'Grit Back (doubles as tray)'],
-          ['Custom Branding', 'Logo, Labeling, Boxing Available']
-        ]
-      },
-      {
-        id: 'gbpb35',
-        name: 'Grit Back Paint Bucket (3.5 Gal)',
-        item: 'GBPB-35',
-        cat: 'buckets',
-        featured: false,
-        badge: '',
-        img: 'images/gbpb.jpg',
-        short: '3.5 gal, flat grit back doubles as paint tray',
-        desc: 'Large 3.5-gallon grit back paint bucket for bigger projects. Features flat grit back and retractable lid. Custom branding available.',
-        specs: [
-          ['Capacity', '3.5 Gallon'],
-          ['Key Feature', 'Grit Back (doubles as tray)'],
-          ['Lid', 'Retractable with brush holders'],
-          ['Custom Branding', 'Logo, Labeling, Boxing Available']
-        ]
-      },
-      {
-        id: 'bclo',
-        name: 'Bucket Combo Lid & Opener',
-        item: 'BCLO',
-        cat: 'buckets',
-        featured: false,
-        badge: '',
-        img: 'images/bclo.jpg',
-        short: 'Lid + opener combo, fits all 3.5 & 5 gal buckets',
-        desc: 'Combo lid and bucket opener. Lid includes a special socket for storing the opener tool. Fits all standard 5 & 3.5 gallon paint buckets. Never lose your opening tool again!',
-        specs: [
-          ['Fits', 'All 3.5 & 5 Gallon Buckets'],
-          ['Includes', 'Lid + Bucket & Can Opener'],
-          ['Lid Feature', 'Socket for opener storage'],
-          ['Opener Feature', 'Opens buckets & paint cans']
-        ]
-      },
-      {
-        id: 'hdub1',
-        name: 'Heavy Duty Utility Tote',
-        item: 'HDUB-1',
-        cat: 'buckets',
-        featured: true,
-        badge: 'New',
-        badgeClass: 'new',
-        img: 'images/hdub1.jpg',
-        short: 'Versatile tote, two deep wells, heavy duty handle',
-        desc: 'A versatile utility tote with two 7.5" deep wells for tools, cleaning supplies, paint cans, and more. Heavy duty handle engineered for extra weight capacity. Great for hospitality, medical, painting, remodeling, and livestock grooming.',
-        specs: [
-          ['Wells', 'Two Deep Wells (7.5" depth)'],
-          ['Handle', 'Heavy Duty, Reinforced'],
-          ['Colors', 'Several Colors Available'],
-          ['Uses', 'Hospitality, Medical, Painting, Remodeling'],
-          ['Custom Branding', 'Logo, Labeling, Boxing Available'],
-          ['Floor Display', '24-48 PCS (18"W x 36"H x 18"D)'],
-          ['Dump Bin', '20-40 PCS (30"W x 36"H x 30"D)']
-        ]
-      },
-      {
-        id: 'ezpr',
-        name: 'EZ Paint Roller',
-        item: 'EZPR-3 / EZPR-4 / EZPR-9',
-        cat: 'tools',
-        featured: false,
-        badge: '',
-        img: 'images/ezpr.jpg',
-        short: 'Available in 3", 4", and 9" sizes',
-        desc: 'Durable all-plastic paint rollers in 3", 4", and 9" sizes. Perfectly balanced for even coverage on smooth and semi-smooth surfaces. Lightweight with pegboard-ready header card packaging. Custom branding available.',
-        specs: [
-          ['Sizes Available', '3", 4", 9"'],
-          ['Balance', 'Center-balanced for even coverage'],
-          ['Surfaces', 'Smooth & Semi-Smooth'],
-          ['Packaging', 'Peg Board Header Card'],
-          ['Custom Branding', 'Logo, Labeling, Boxing Available']
-        ]
-      },
-      {
-        id: 'ms51',
-        name: '5-in-1 Mixing Stick',
-        item: '5IN1-MS',
-        cat: 'tools',
-        featured: false,
-        badge: '',
-        img: 'images/ms51.jpg',
-        short: 'Mixes, measures, aerates, cleans & clips-on',
-        desc: 'The only mixing stick you\'ll ever need. Five functions in one tool: mixes, measures, aerates, cleans, and clips onto paint cans and buckets. Pegboard-ready retail presentation.',
-        specs: [
-          ['Function 1', 'Mixes'],
-          ['Function 2', 'Measures'],
-          ['Function 3', 'Aerates'],
-          ['Function 4', 'Cleans'],
-          ['Function 5', 'Clips onto cans & buckets'],
-          ['Retail', 'Peg Wall Ready']
-        ]
-      },
-      {
-        id: 'bco',
-        name: 'Bucket & Can Opener',
-        item: 'BCO',
-        cat: 'tools',
-        featured: false,
-        badge: '',
-        img: 'images/bco.jpg',
-        short: 'Opens paint cans & buckets, impulse buy sized',
-        desc: 'Versatile tool that opens both paint cans and paint buckets. Sized and priced as an impulse buy. Available in two hanging configurations for retail peg walls. Also available as a 12-piece POP display.',
-        specs: [
-          ['Opens', 'Paint Cans & Buckets'],
-          ['Retail Options', '2 Hanging Configurations'],
-          ['POP Display', '12 Pieces'],
-          ['Retail', 'Standard Peg Wall Ready']
-        ]
-      },
-      {
-        id: 'ps',
-        name: 'Standard Paint Screen',
-        item: 'SPS',
-        cat: 'tools',
-        featured: false,
-        badge: '',
-        img: 'images/ps.jpg',
-        short: 'Heavy duty, fits all 5 gal buckets',
-        desc: 'Heavy duty paint screen that fits all standard 5-gallon buckets and works with standard paint trays. Hooks secure the screen and provide the best rolling angle. Easier to clean, resists solvents and paint buildup.',
-        specs: [
-          ['Fits', 'All 5 Gallon Buckets'],
-          ['Compatible', 'Standard Paint Trays'],
-          ['Features', 'Hook Secure, Best Roll Angle'],
-          ['Durability', 'Resists Solvents & Buildup'],
-          ['Stackable', 'Yes']
-        ]
-      }
-    ];
-
-    // ===== RENDER =====
-    function renderCard(p) {
-      const badge = p.badge ? `<span class="product-badge ${p.badgeClass || ''}">${p.badge}</span>` : '';
-      return `
-        <div class="product-card" data-cat="${p.cat}" data-id="${p.id}" onclick="openModal('${p.id}')" style="animation-delay:${Math.random()*0.3}s">
-          <div class="product-img-wrap">
-            <img src="${p.img}" alt="${p.name}" loading="lazy">
-            ${badge}
-          </div>
-          <div class="product-info">
-            <h3>${p.name}</h3>
-            <div class="product-item-num">ITEM# ${p.item}</div>
-            <p>${p.short}</p>
-            <span class="view-details-btn">View Details</span>
-          </div>
-        </div>
-      `;
-    }
-
-    // Featured (home page — first 8)
-    const featuredGrid = document.getElementById('featured-grid');
-    const featured = products.filter(p => p.featured);
-    featuredGrid.innerHTML = featured.map(renderCard).join('');
-
-    // All products page
-    const allGrid = document.getElementById('all-products-grid');
-    allGrid.innerHTML = products.map(renderCard).join('');
-
-    // ===== CATEGORY FILTER =====
-    function filterCat(cat, btn) {
-      document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
-      btn.classList.add('active');
-      document.querySelectorAll('#all-products-grid .product-card').forEach(card => {
-        if (cat === 'all' || card.dataset.cat === cat) {
-          card.style.display = '';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    }
-
-    // ===== MODAL =====
-    function openModal(id) {
-      const p = products.find(x => x.id === id);
-      if (!p) return;
-      document.getElementById('modal-title').textContent = p.name;
-      document.getElementById('modal-item').textContent = 'ITEM# ' + p.item;
-      document.getElementById('modal-img').src = p.img;
-      document.getElementById('modal-img').alt = p.name;
-      document.getElementById('modal-desc').textContent = p.desc;
-
-      const specsHtml = '<h3>Specifications</h3>' + p.specs.map(s =>
-        `<div class="spec-row"><span class="spec-label">${s[0]}</span><span class="spec-value">${s[1]}</span></div>`
-      ).join('');
-      document.getElementById('modal-specs').innerHTML = specsHtml;
-
-      document.getElementById('modal').classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal() {
-      document.getElementById('modal').classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-    // ===== NAVIGATION =====
-    function showPage(page, el) {
-      document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
-      document.getElementById('page-' + page).style.display = 'block';
-      document.querySelectorAll('nav 
+function showPage(pg,el){
+var pages=document.querySelectorAll('.page');for(var i=0;i<pages.length;i++)pages[i].style.display='none';
+document.getElementById('page-'+pg).style.display='block';
+var lnk=document.querySelectorAll('nav a');for(var i=0;i<lnk.length;i++)lnk[i].classList.remove('active');
+if(el&&el.closest('nav'))el.classList.add('active');
+document.querySelector('nav').classList.remove('open');
+window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
