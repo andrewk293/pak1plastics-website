@@ -14,8 +14,7 @@
 html{scroll-behavior:smooth}
 body{font-family:'Source Sans 3',sans-serif;color:var(--gray-800);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
 .header-banner{background:var(--navy);position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.3)}
-.header-top{background:linear-gradient(135deg,var(--navy),var(--navy-light));text-align:center;padding:20px 20px 12px;position:relative}
-.header-top::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:80px;height:2px;background:var(--gold)}
+.header-top{background:linear-gradient(135deg,var(--navy),var(--navy-light));text-align:center;position:relative}
 .logo-text{font-family:'Oswald',sans-serif;font-size:2.6rem;font-weight:700;letter-spacing:6px;color:var(--white)}
 .logo-text span{color:var(--gold)}
 .logo-subtitle{font-size:.8rem;letter-spacing:4px;color:var(--gold-light);text-transform:uppercase;margin-top:2px;font-weight:300}
@@ -114,9 +113,8 @@ footer{background:var(--navy);border-top:3px solid var(--gold);padding:28px 20px
 </head>
 <body>
 <header class="header-banner">
-<div class="header-top">
-<div class="logo-text">PAK<span>1</span> PLASTICS</div>
-<div class="logo-subtitle">Quality Plastic Products &bull; Made in the USA</div>
+<div class="header-top" style="padding:0;">
+<img src="images/Pak_Header_rev3.jpg" alt="PAK 1 PLASTICS" style="width:100%;max-height:110px;object-fit:cover;object-position:center;display:block;">
 </div>
 <button class="hamburger" onclick="document.querySelector('nav').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
 <nav>
