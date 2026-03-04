@@ -61,7 +61,12 @@ nav a:hover{color:var(--gold)}nav a:hover::after{width:60%}nav a.active{color:va
 /* CAROUSEL */
 .carousel{position:relative;width:100%}
 .carousel-main{width:100%;aspect-ratio:1;border-radius:8px;background:var(--gray-100);overflow:hidden}
-.carousel-main img{width:100%;height:100%;object-fit:cover}
+.carousel-main img{width:100%;height:100%;object-fit:cover;cursor:zoom-in;transition:opacity .2s}
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:999;justify-content:center;align-items:center;cursor:zoom-out}
+.lightbox.open{display:flex}
+.lightbox img{max-width:92vw;max-height:92vh;object-fit:contain;border-radius:6px;box-shadow:0 8px 60px rgba(0,0,0,0.6)}
+.lightbox-close{position:absolute;top:18px;right:24px;color:white;font-size:2rem;cursor:pointer;background:none;border:none;line-height:1;opacity:.8}
+.lightbox-close:hover{opacity:1}
 .carousel-nav{display:flex;justify-content:center;align-items:center;gap:10px;margin-top:12px}
 .carousel-prev,.carousel-next{background:var(--navy);color:white;border:none;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:background .2s}
 .carousel-prev:hover,.carousel-next:hover{background:var(--gold);color:var(--navy)}
@@ -124,7 +129,7 @@ footer{background:var(--navy);border-top:3px solid var(--gold);padding:28px 20px
 </nav>
 </header>
 <div id="page-home" class="page">
-<section class="hero"><h1>Premium Plastic Products</h1><div class="gold-divider"></div><p>Paint trays, bucket organizers, rollers, and more - manufactured with recycled post-consumer plastic right here in the USA.</p><div class="usa-badge"><img src="images/AmericanMade_Seal_rev2.jpg" alt="100% American Made" style="height:80px;width:80px;border-radius:50%;object-fit:cover;"></div></section>
+<section class="hero"><h1>Premium Plastic Products</h1><div class="gold-divider"></div><p>Paint trays, bucket organizers, rollers, and more - manufactured with recycled post-consumer plastic right here in the USA.</p><div style="margin-top:24px;max-width:700px;margin-left:auto;margin-right:auto;border-radius:6px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.3);"><img src="images/Flag_of_the_United_States.jpg" alt="Made in the USA" style="width:100%;display:block;"></div></section>
 <section class="products-section"><h2 class="section-title">Featured Products</h2><div class="products-grid" id="featured-grid"></div></section>
 <section class="callout"><h2>Manufacturing Power</h2><div class="gold-divider"></div><p>We produce tens of thousands of units daily across our full product line. Custom color, branding, and packaging available for all products.</p></section>
 <section class="capacity-section"><h2 class="section-title">Daily Production Capacity</h2><div class="capacity-grid">
@@ -162,6 +167,10 @@ footer{background:var(--navy);border-top:3px solid var(--gold);padding:28px 20px
 <div id="cf-status" style="text-align:center;margin-top:14px;font-family:Oswald,sans-serif;letter-spacing:1px;display:none"></div>
 </div></div></section>
 </div>
+<div class="lightbox" id="lightbox" onclick="if(event.target===this||event.target.tagName==='IMG')closeLightbox()">
+<button class="lightbox-close" onclick="closeLightbox()">&#x2715;</button>
+<img id="lightbox-img" src="" alt="">
+</div>
 <footer>
 <div class="footer-nav"><a href="#" onclick="showPage('home',this)">Home</a><a href="#" onclick="showPage('products',this)">Products</a><a href="#" onclick="showPage('contact',this)">Contact</a></div>
 <div class="footer-contact">917-544-3581 | <a id="emlk2">Loading...</a></div>
@@ -172,7 +181,7 @@ footer{background:var(--navy);border-top:3px solid var(--gold);padding:28px 20px
 <div class="modal-header"><div><h2 id="modal-title"></h2><div class="item-num" id="modal-item"></div></div><button class="modal-close" onclick="closeModal()">X</button></div>
 <div class="modal-body">
 <div class="carousel">
-<div class="carousel-main"><img id="modal-img" src="" alt=""></div>
+<div class="carousel-main"><img id="modal-img" src="" alt="" onclick="openLightbox(this.src)"></div>
 <div class="carousel-nav" id="carousel-nav">
 <button class="carousel-prev" onclick="carouselPrev()">&lt;</button>
 <div class="carousel-dots" id="carousel-dots"></div>
@@ -207,15 +216,15 @@ var P=[
 {id:'ptc16',n:'Paint Trim Cup',it:'PTC-16',c:'trays',f:0,b:'',bc:'',imgs:['images/ptc16.jpg','images/ptc16_2.jpg'],s:'16 oz capacity, handle and pour spout',d:'16 oz paint trim cup with handle and pour spout. For small brushes and detail work. Stackable.',sp:[['Capacity','16 Ounces'],['For','Small Brushes'],['Dimensions','4.75" x 7.25"'],['Weight','0.17 lbs'],['Features','Handle, Pour Spout, Stackable'],['Box Pack','6 EA / Box']]},
 {id:'spt1q',n:'Silver Econ Tray',it:'SPT-1Q',c:'trays',f:0,b:'',bc:'',imgs:['images/spt1q.jpg','images/spt1q_2.jpg','images/spt1q_3.jpg'],s:'1 Qt, fits 7" or 9" rollers, ladder grips',d:'Economy silver paint tray with ladder grips. Lightweight, stackable.',sp:[['Capacity','1 Quart'],['Roller Size','7" or 9"'],['Dimensions','11.5" x 15.5"'],['Weight','0.56 lbs'],['Features','Ladder Grips, Stackable'],['Bulk Pack','900 EA / Skid'],['Box Pack','24 EA / Box']]},
 {id:'dwth18',n:'18" Deep Well Handle Tray',it:'DWTH-18',c:'trays',f:0,b:'Pro',bc:'new',imgs:['images/dwth18.jpg','images/dwth18_2.jpg','images/dwth18_3.jpg'],s:'3 gal, built-in handle, reinforced ramp',d:'Largest tray, 3 gallon capacity with built-in handle. Reinforced ramp, wide stubs. Reprocessed plastic.',sp:[['Capacity','3 Gallon'],['Roller Size','18"'],['Dimensions','22" x 16"'],['Weight','3.4 lbs'],['Material','Black, Reprocessed Plastic'],['Features','Built-in Handle, Reinforced Ramp'],['Box Pack','4 EA / Box']]},
-{id:'bog5',n:'Bucket Tool Organizer',it:'BOG-5',c:'buckets',f:1,b:'New',bc:'new',imgs:['images/bucket_tool_organzier.jpg','images/Counter_BO_Display.jpg'],s:'Fits all 3.5 and 5 gal buckets',d:'Fits all standard 5 and 3.5 gallon buckets. Multiple slots and trays for tools, nuts, bolts.',sp:[['Fits','All 3.5 and 5 Gallon Buckets'],['Features','Multiple Slots and Trays'],['Made From','Recycled Post-Consumer Plastic'],['Display Options','Floor, Counter, Dump Bin']]},
+{id:'bog5',n:'Bucket Tool Organizer',it:'BOG-5',c:'buckets',f:1,b:'New',bc:'new',imgs:['images/bucket tool organzier.jpg','images/Counter_BO_Display.jpg'],s:'Fits all 3.5 and 5 gal buckets',d:'Fits all standard 5 and 3.5 gallon buckets. Multiple slots and trays for tools, nuts, bolts.',sp:[['Fits','All 3.5 and 5 Gallon Buckets'],['Features','Multiple Slots and Trays'],['Made From','Recycled Post-Consumer Plastic'],['Display Options','Floor, Counter, Dump Bin']]},
 {id:'gbpb15',n:'Painting Bucket (1.5 Gal)',it:'GBPB-15',c:'buckets',f:1,b:'',bc:'',imgs:['images/Paint_Bucket_1.jpg','images/Paint_Bucket_1_W_BlkLid.jpg','images/Paint_Bucket_1_W_BlkLid_CL.png'],s:'1.5 gal, built-in grit screen, retractable brush-holder lid',d:'1.5-gallon painting bucket with built-in grit/screen back. Retractable lid includes dual brush holders. No spills, no mess. Easy to clean, resists solvents and paint buildup.',sp:[['Capacity','1.5 Gallon'],['Key Feature','Built-in Grit Screen'],['Lid','Retractable with dual brush holders'],['Made In','USA']]},
 {id:'gbpb35',n:'Painting Bucket (3.5 Gal)',it:'GBPB-35',c:'buckets',f:1,b:'',bc:'',imgs:['images/Clear_Bucket1.jpg','images/Clear_Bucket_W_BlkLid.jpg','images/Paint_Bucket_1_W_BlueLid.jpg'],s:'3.5 gal, built-in grit screen, brush-holder lid',d:'3.5-gallon painting bucket with built-in grit screen. Retractable lid with dual brush holders. No spills, no mess.',sp:[['Capacity','3.5 Gallon'],['Key Feature','Built-in Grit Screen'],['Lid','Retractable with dual brush holders'],['Made In','USA']]},
 {id:'bclo',n:'Painting Lid with Brush Holders',it:'BCLO',c:'buckets',f:0,b:'',bc:'',imgs:['images/Paint_Bucket_1_W_BlueLid.jpg','images/Paint_Bucket_1_W_BlkLid.jpg'],s:'Fits PAK 1.5 & 3.5 gal buckets, dual brush holders',d:'Painting lid with built-in dual brush holders and paint mat on reverse side. Fits all PAK 1.5 and 3.5 gallon painting buckets. No spills, no mess.',sp:[['Fits','PAK 1.5 and 3.5 Gallon Buckets'],['Includes','Dual Brush Holders, Paint Mat'],['Colors','Blue, Black']]},
 {id:'hdub1',n:'Heavy Duty Utility Tote — 81 PAK',it:'HDUB-81',c:'buckets',f:1,b:'New',bc:'new',imgs:['images/81_PAK_Trim_Bin.jpg','images/92_PAK_Empty_Bin.png'],s:'Two-well tote, heavy duty, great for painting & trade use',d:'Heavy duty utility tote with two deep wells. Ideal for carrying caulk tubes, tools, and supplies on the job. Available in multiple colors.',sp:[['Wells','Two Deep Wells'],['Handle','Heavy Duty, Reinforced'],['Colors','Several Available'],['Uses','Painting, Trades, Hospitality']]},
 {id:'ezpr',n:'EZ Paint Roller',it:'EZPR-9',c:'tools',f:1,b:'',bc:'',imgs:['images/Ez_Roller_Silo3.jpg'],s:'9" Grab-N-Go roller, center-balanced, snap-in/out',d:'Center-balanced 9" all-plastic paint roller. Rollers snap in and out easily. Lightweight for easy control. Threaded handle for extension pole use. For smooth and semi-smooth surfaces.',sp:[['Size','9 inch (230mm)'],['Balance','Center-balanced'],['Surfaces','Smooth and Semi-Smooth'],['Handle','Threaded for extension pole'],['Made In','USA']]},
-{id:'ms51',n:'5-in-1 Mixing Stick',it:'5IN1-MS',c:'tools',f:0,b:'',bc:'',imgs:['images/ms51.jpg'],s:'Mixes, measures, aerates, cleans, clips-on',d:'Five functions in one: mixes, measures, aerates, cleans, and clips onto paint cans and buckets.',sp:[['Functions','Mixes, Measures, Aerates, Cleans, Clips']]},
-{id:'bco',n:'Bucket & Can Opener',it:'BCO',c:'tools',f:1,b:'',bc:'',imgs:['images/Can_Opener_Silo.jpg','images/PaintCanGOOD.jpg'],s:'Opens paint cans and buckets, heavy duty professional quality',d:'Heavy duty professional-quality opener for paint cans and buckets. Patent pending ergonomic grip. Two hanging retail configurations available.',sp:[['Opens','Paint Cans and Buckets'],['Quality','Heavy Duty, Professional'],['Retail Options','2 Hanging Configurations'],['Made In','USA']]},
-{id:'ps',n:'Paint Screen in Bucket',it:'SPS',c:'tools',f:1,b:'',bc:'',imgs:['images/Screen_in_Bucket_SILO_copy.jpg'],s:'Heavy duty screen, fits all 5 gal buckets',d:'Heavy duty paint screen for all standard 5-gallon buckets. Hook-secure design for best roll angle. Resists solvents.',sp:[['Fits','All 5 Gallon Buckets'],['Features','Hook Secure, Best Roll Angle'],['Durability','Resists Solvents']]},
+{id:'ms51',n:'5-in-1 Mixing Stick',it:'5IN1-MS',c:'tools',f:0,b:'',bc:'',imgs:['images/Mix_Stick_Silo.jpg'],s:'Mixes, measures, aerates, cleans, clips-on',d:'Five functions in one: mixes, measures, aerates, cleans, and clips onto paint cans and buckets.',sp:[['Functions','Mixes, Measures, Aerates, Cleans, Clips']]},
+{id:'bco',n:'Bucket & Can Opener',it:'BCO',c:'tools',f:1,b:'',bc:'',imgs:['images/PaintCanGOOD.jpg','images/Can_Opener_Silo.jpg'],s:'Opens paint cans and buckets, heavy duty professional quality',d:'Heavy duty professional-quality opener for paint cans and buckets. Patent pending ergonomic grip. Two hanging retail configurations available.',sp:[['Opens','Paint Cans and Buckets'],['Quality','Heavy Duty, Professional'],['Retail Options','2 Hanging Configurations'],['Made In','USA']]},
+{id:'ps',n:'Paint Screen in Bucket',it:'SPS',c:'tools',f:1,b:'',bc:'',imgs:['images/Screen_in_Bucket_SILO copy.jpg'],s:'Heavy duty screen, fits all 5 gal buckets',d:'Heavy duty paint screen for all standard 5-gallon buckets. Hook-secure design for best roll angle. Resists solvents.',sp:[['Fits','All 5 Gallon Buckets'],['Features','Hook Secure, Best Roll Angle'],['Durability','Resists Solvents']]},
 {id:'pkit',n:'Grab-N-Go Painting Kit',it:'PKIT-GNG',c:'tools',f:1,b:'New',bc:'new',imgs:['images/Paint_Kit_Silo.jpg'],s:'Fits 1 gal & half-gal cans, includes mixing stick, brush cup, drip tray',d:'All-in-one Grab-N-Go painting kit. Fits 1 gallon and half-gallon paint cans. Includes aerating paint mixing stick, clip-on brush cup, and paint drip tray. Reusable, cleans easily with water.',sp:[['Fits','1 Gallon and Half-Gallon Cans'],['Includes','Mixing Stick, Brush Cup, Drip Tray'],['Material','Sturdy Plastic'],['Reusable','Yes — cleans with water'],['Made In','USA']]}
 ];
 
@@ -264,7 +273,21 @@ document.getElementById('modal').classList.add('open');
 document.body.style.overflow='hidden';
 }
 
-function closeModal(){document.getElementById('modal').classList.remove('open');document.body.style.overflow='';}
+function openLightbox(src){
+var lb=document.getElementById('lightbox');
+document.getElementById('lightbox-img').src=src;
+lb.classList.add('open');
+document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+document.getElementById('lightbox').classList.remove('open');
+document.getElementById('lightbox-img').src='';
+if(document.getElementById('modal').classList.contains('open'))return;
+document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){
+if(e.key==='Escape')closeLightbox();
+});
 document.addEventListener('keydown',function(e){
 if(e.key==='Escape')closeModal();
 if(e.key==='ArrowRight'&&document.getElementById('modal').classList.contains('open'))carouselNext();
